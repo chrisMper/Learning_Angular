@@ -211,7 +211,7 @@ Herewe are have implemented the navigation from home component to the details co
 
    8. In the housing-location.component.ts Instead of adding a href attribute to the anchor element, In angular we add a router link directive.
 
-     # To identify on which path to route on the housing-location component
+    # To identify on which path to route on the housing-location component
     - We can pass data directly to the route
     or
     - Pass some sort of Identifyer via the URL 
@@ -219,7 +219,7 @@ Herewe are have implemented the navigation from home component to the details co
     9. Passing an identifier via the url
      - Update the router link to include the id of the housing location
      - Update routes.ts to include the id of the housing location
-      - # Here we now use parameterized routers in angular
+     - # Here we now use parameterized routers in angular
     
     10. Now update the details component to display the details of the housing location.
 
