@@ -149,6 +149,37 @@ ng generate component Home --standalone --inline-template
 
 5. Create a new component like previous called HousingLocation and import it to home component 
 
+## Customizing Components
+
+1. Update the component template in housing location component
+
+2. Create an interface for the housingLocation data through Angular CLI and add the types of data to the interface.
+
+```bash
+ng generate interface housingLocation
+```
+3. Use input properties to pass data to the component and use the interface to know what kind of data to expect.
+
+Notes:
+  - used interpolation to display data in the template
+  - 
+
+4. Working with the list of locations in home.coponents.ts
+
+    # iteration over data using ngFor
+
+    ```bash
+    <section class="results">
+      <app-housing-location *ngFor="let housingLocation of housingLocationList"></app-housing-location>
+    </section>
+    ```
+     # Passing the housing location list to the housing location component
+    ```bash
+    <app-housing-location *ngFor="let housingLocation of housingLocationList" [housingLocation]="housingLocation"></app-housing-location>
+    ```    
+5. Copy paste styles from https://gist.github.com/MarkTechson/fa601fdc856d26b3bfa5030dae147f00 to app.component.css
+
+
 
 
 
