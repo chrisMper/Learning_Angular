@@ -179,6 +179,56 @@ Notes:
     ```    
 5. Copy paste styles from https://gist.github.com/MarkTechson/fa601fdc856d26b3bfa5030dae147f00 to app.component.css
 
+## Routing
+
+Herewe are have implemented the navigation from home component to the details component using routing.
+
+1. Enable routing in the application
+ In main.ts file import provideRouter function from @angular/router and also import the routes array.
+ 
+2. To create routes.ts file under src/app folder 
+ - Import the routes array from @angular/router
+ - Import the Home and Details components
+ - Define the routes array with the path and component to be displayed
+ 
+ 3. Update the application to desplay components based on the current rout
+  - That done on app.component.ts file by using router and router outlet tags
+  
+  4. Update the routes.ts by adding path
+
+  5. Update the main.ts to use the routes.ts file
+
+  6. Creating a details component using Angular CLI
+  ```bash
+  ng g c details --standalone --inline-template
+  ```
+   - g short form of generate
+   - c short form of component
+   - standalone is used to create standalone components
+   - inline-template is used to create inline templates
+
+   7. For details add an new route to routes.ts file and add a link to the details page to housing-list component
+
+   8. In the housing-location.component.ts Instead of adding a href attribute to the anchor element, In angular we add a router link directive.
+
+    ### To identify on which path to route on the housing-location component
+    - We can pass data directly to the route
+    or
+    - Pass some sort of Identifyer via the URL 
+
+    9. Passing an identifier via the url
+     - Update the router link to include the id of the housing location
+     - Update routes.ts to include the id of the housing location
+      - ### here we now use parameterized routers in angular
+    
+    10. Now update the details component to display the details of the housing location.
+
+
+
+  
+
+
+
 
 
 
