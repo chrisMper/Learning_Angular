@@ -1,3 +1,10 @@
+### Running the Project
+```bash
+ng serve
+```
+It will run on `http://localhost:4200`
+
+
 # Learning_Angular
 This is my first learning project of Angular
 
@@ -223,9 +230,43 @@ Herewe are have implemented the navigation from home component to the details co
     
     10. Now update the details component to display the details of the housing location.
 
+## Services in Angular
 
+Services are used to share data between components.
+
+1. Create a service using Angular CLI
+
+```bash
+ng g s housing
+```
+  - g short form of generate
+  - s short form of service
+
+2. In the houding.service.ts file 
+ - Add the housingLocationList array with the data
+ - Add the getAllHousingLocations() method
+ - Add the getHousingLocationById(id: number) method
+
+3. In the home.component.ts file 
+ - Inject the housingService in the constructor
+ - Add the housingLocationList array
+ - Add the getAllHousingLocations() method
+
+ ### Angular used dependancy Injection to create and share services in a application. Dependency injection is a pattern in which a component or service requests its dependencies from an external source.
+
+ 4. In the details component 
+  - Inject the ActivatedRoute service
+  - Inject the HousingService 
+  - Get the id from the ActivatedRoute
+  - Use the id to get the housing location from the HousingService
+  - Display the housing location in the template
+  - Add css to the details component
+
+  ## Forms in Angular
 
   
+
+
 
 
 
