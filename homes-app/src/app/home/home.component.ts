@@ -28,7 +28,11 @@ export class HomeComponent {
   housingService: HousingService = inject(HousingService)
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
+    // using then() to get the data from the promise
+    // using arrow function to get the data from the promise
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.housingLocationList = housingLocationList;
+    });
   }
 
 }

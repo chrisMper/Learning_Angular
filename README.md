@@ -173,14 +173,14 @@ Notes:
 
 4. Working with the list of locations in home.coponents.ts
 
-    # Iteration over data using ngFor
+    ### Iteration over data using ngFor
 
     ```bash
     <section class="results">
       <app-housing-location *ngFor="let housingLocation of housingLocationList"></app-housing-location>
     </section>
     ```
-     # Passing the housing location list to the housing location component
+    ### Passing the housing location list to the housing location component
     ```bash
     <app-housing-location *ngFor="let housingLocation of housingLocationList" [housingLocation]="housingLocation"></app-housing-location>
     ```    
@@ -264,9 +264,94 @@ ng g s housing
 
   ## Forms in Angular
 
+  1. To create angular forms we need to import FormControl, FormGroup and ReactiveFormsModule classes from @angular/forms in the details component.ts file
+
+  2. To the export class add 
+  ```typescript
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
+  ```
+  - FormControl is a class that is used to create a form control
+  - FormGroup is a class that is used to create a form group
+  - ReactiveFormsModule is a class that is used to create a reactive form  
+
+  3. Create the following html for the form in the details component template
+  ```html
+    <form [formGroup]="applyForm">
+      <label for="first-name">First Name</label>
+      <input id="first-name" type="text" formControlName="firstName">
+      <button type="submit">Apply</button>
+    </form>
+
+  ```   
+
+  ### Event Binding in Angular
+
+  <form [formGroup]="applyForm" (submit)="submitApplication()">
+  - (submit) is an event binding that is used to handle the submit event of the form
   
+  4. Add the submitApplication() method to the details component class
+  ```typescript
+  //In the below to access the values from Formgroup apply form we use .value.fieldname
+  //To pass the values to the service we use ?? operator to handle the null values.
+  submitApplication() {
+    this.housingService.submitApplication(
+      this.applyForm.value.firstName ?? '',)
+  }
+  ```
+  5. Update the housing.service.ts file to add the submitApplication() method
+
+## HTTP requests
+
+1. Moving the hard Coded data to a standalone server on our local machine using json-server 
+ ```bash
+ npm install -g json-server
+ ```
+ - - g flag is used to install the package globally
+
+ 2. Create a new file in homes-app as db.json.
+  - create an empty json object then add a value called locations with an empty array.
+  - Now add the data from the housingLocationList array in housingServices to the locations array in the db.json file.
+  
+  3. start server by running below mentioned command
+  ```bash
+  json-server --watch db.json
+  ```  
+  4. Remove the housingLocationList array from housing.service.ts file
+
+  5. add url variable to housing.service.ts file
+  ```typescript
+  url = 'http://localhost:3000/locations';
+  ```
+  
+  6. change the getAllHousingLocations() method to return the data from the url
+   - async keyword is used to make the method asynchronous
+   - promise is an object that represents the eventual result of an asynchronous operation
+   -remove the existing allHousingLocations array
+   - create a const url
+   ```typescript
+   const data = await fetch(this.url)
+   ```
+   - await is used to wait for the promise to resolve
+   - fetch is used to make an HTTP request
+   - add a return await data.json()
+
+   7. update the get HousingLocationById() method in the housing.service.ts file to return the data from the url
+   - Use interpolation will insert the value of id into the url.
+    - Example : `${this.url}/${id}`
+    - return data.json() ?? undefined
+
+   8. Update other components where we are using the housingLocationList array.
+    - In the home component use the updated getAllHousingLocations() method to get the housing locations
+    - update details component.
+
+## Creating the Search Functionality
 
 
+   
 
 
 

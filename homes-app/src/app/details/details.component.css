@@ -69,6 +69,12 @@ input {
     border-bottom: solid .3px;
 }
 
+/*hover button */
+button.primary:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
 @media (max-width: 1024px) {
     .listing-photo {
         width: 100%;

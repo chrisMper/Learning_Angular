@@ -5,117 +5,19 @@ import { HousingLocation } from './housing-location';
   providedIn: 'root' // This means the service will be available to the entire application
 })
 export class HousingService {
-  // property to hold the data 
-  protected housingLocationList: HousingLocation[] = [
-    {
-      id: 1,
-      name: 'Acme Fresh Start Housing',
-      city: 'New York',
-      state: 'NY',
-      photo: '../assets/bernard-hermant-CLKGGwIBTaY-unsplash.jpg',
-      availableUnits: 4,
-      wifi: true,
-      laundry: false,
-    },
-    {
-      id: 2,
-      name: 'A113 Sale',
-      city: 'Los Angeles',
-      state: 'CA',
-      photo: '../assets/brandon-griggs-wR11KBaB86U-unsplash.jpg',
-      availableUnits: 1,
-      wifi: false,
-      laundry: true,
-    },
-    {
-      id: 3,
-      name: 'Boiling Point',
-      city: 'Boston',
-      state: 'MA',
-      photo: '../assets/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg',
-      availableUnits: 10,
-      wifi: true,
-      laundry: true,
-    },
-    {
-      id: 4,
-      name: 'Berry Place',
-      city: 'Berlin',
-      state: 'Berlin',
-      photo: '../assets/ian-macdonald-W8z6aiwfi1E-unsplash.jpg',
-      availableUnits: 9,
-      wifi: true,
-      laundry: false,
-    },
-    {
-      id: 5,
-      name: 'Golden Gate Property',
-      city: 'San Francisco',
-      state: 'CA',
-      photo: '../assets/krzysztof-hepner-978RAXoXnH4-unsplash.jpg',
-      availableUnits: 3,
-      wifi: false,
-      laundry: false,
-    },
-    {
-      id: 6,
-      name: 'Old Town Property',
-      city: 'Chicago',
-      state: 'IL',
-      photo: '../assets/phil-hearing-IYfp2Ixe9nM-unsplash.jpg',
-      availableUnits: 2,
-      wifi: true,
-      laundry: true,
-    },
-    {
-      id: 7,
-      name: 'New Apartment',
-      city: 'Tampa',
-      state: 'FL',
-      photo: '../assets/r-architecture-GGupkreKwxA-unsplash.jpg',
-      availableUnits: 5,
-      wifi: true,
-      laundry: true,
-    },
-    {
-      id: 8,
-      name: 'West Coast Home',
-      city: 'Portland',
-      state: 'OR',
-      photo: '../assets/r-architecture-JvQ0Q5IkeMM-unsplash.jpg',
-      availableUnits: 7,
-      wifi: true,
-      laundry: false,
-    },
-    {
-      id: 9,
-      name: 'Rocky Mountain Home',
-      city: 'Denver',
-      state: 'CO',
-      photo: '../assets/saru-robert-9rP3mxf8qWI-unsplash.jpg',
-      availableUnits: 2,
-      wifi: true,
-      laundry: true,
-    },
-    {
-      id: 10,
-      name: 'Pine Ridge Haven',
-      city: 'Austin',
-      state: 'TX',
-      photo: '../assets/webaliser-_TPTXZd9mOo-unsplash.jpg',
-      availableUnits: 6,
-      wifi: true,
-      laundry: true,
-    },
-  ];
+  url = 'http://localhost:3000/locations'; // url is the url of the API
   constructor() { }
   //method to get all the housing locations
-  getAllHousingLocations(): HousingLocation[] {
-    return this.housingLocationList;
+  async getAllHousingLocations(): Promise<HousingLocation[]> {
+    const data = await fetch(this.url); // fetch is used to make an HTTP request
+    return data.json() ?? [];
   }
   //method to get a single housing location by id
-  getHousingLocationById(id: number): HousingLocation | undefined {
-    return this.housingLocationList.find((housingLocation) => housingLocation.id === id); // find is a method of array prototype which is
-    // used to find the first element in an array that satisfies a condition 
+  async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
+    const data = await fetch(`${this.url}/${id}`); // this interpolation will insert the value of id into the url
+    return data.json() ?? undefined;
+  }
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(firstName, lastName, email);
   }
 }
