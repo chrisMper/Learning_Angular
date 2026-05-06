@@ -1,10 +1,3 @@
-### Running the Project
-```bash
-ng serve
-```
-It will run on `http://localhost:4200`
-
-
 # Learning_Angular
 This is my first learning project of Angular
 
@@ -373,6 +366,65 @@ Creating a form and a click handler.
   
 
 ## !COMPLETED DEVELOPMENT ON 06-05-2026!
+
+# 🏠 Project Summary: "Homes App"
+This is a comprehensive learning project designed to teach the fundamentals of **Angular (v16+)**. It follows the journey of building a real-world application for browsing and applying for housing locations.
+
+**Key concepts covered:**
+*   **Standalone Components:** Modern Angular architecture without complex modules.
+*   **Data Management:** Using **Services** and **Dependency Injection** to share data.
+*   **Routing:** Implementing navigation between a home list and a specific details page using **Parameterized Routes**.
+*   **Reactive Forms:** Building a custom application form with validation logic.
+*   **Asynchronous Data:** Fetching data from a mock REST API using `async/await` and the `fetch` API.
+*   **Interactivity:** Implementing real-time search/filtering functionality by city.
+
+---
+
+## 🚀 Setup Guide
+
+To get the project running on your local machine, follow these steps:
+
+### 1. Prerequisites
+Ensure you have **Node.js** and **npm** installed. Then, install the **Angular CLI** and **json-server** globally:
+```bash
+npm install -g @angular/cli
+npm install -g json-server
+```
+
+### 2. Project Installation
+Navigate to the project folder and install the local dependencies:
+```bash
+cd homes-app
+npm install
+```
+
+### 3. Start the Mock Backend
+The application fetches data from a local JSON file. You need to start the mock server in a separate terminal window:
+```bash
+# Inside the homes-app directory
+json-server --watch db.json
+```
+*The server will run on `http://localhost:3000`.*
+
+### 4. Start the Angular Application
+In your original terminal window, launch the Angular development server:
+```bash
+ng serve
+```
+
+### 5. View the App
+Once the build is complete, open your browser to:
+👉 **[http://localhost:4200](http://localhost:4200)**
+
+---
+
+## 🛠️ Development Tools Used
+*   **Angular CLI:** For generating components, services, and interfaces.
+*   **Angular Language Service:** For better editor support (IntelliSense).
+*   **json-server:** To simulate a real-world API environment.
+
+
+
    
 
 
