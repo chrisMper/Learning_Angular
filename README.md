@@ -350,7 +350,29 @@ ng g s housing
 
 ## Creating the Search Functionality
 
+Creating a form and a click handler.
 
+ 1. In the home.component.ts file 
+  - Use a template reference variable to get the value of the search input (use # to create a variable)
+  ```html
+  <input type="text" placeholder="Filter by city" #filter>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+  ``` 
+   - The filter.value came from the template variable filter
+  
+  2. change the  app-housing-location tag to use the filteredHousingLocationList array
+  ```html
+  <app-housing-location *ngFor="let housingLocation of filteredHousingLocationList" [housingLocation]="housingLocation"></app-housing-location>
+  ```
+  3. Update the component class
+  - Import the HousingService in the constructor
+  - Inject the housingService in the constructor
+  - Add the housingLocationList array
+  - Add the filteredHousingLocationList array
+  - Add the filterResults() method
+  
+
+## !COMPLETED DEVELOPMENT ON 06-05-2026!
    
 
 
